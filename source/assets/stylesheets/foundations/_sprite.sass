@@ -1,0 +1,81 @@
+/*
+  SASS variables are information about icon's compiled state, stored under its original file name
+
+  .icon-home
+    width: $icon-home-width
+
+  The large array-like variables contain all information about a single icon
+  $icon-home: x y offset_x offset_y width height total_width total_height image_path
+
+  At the bottom of this section, we provide information about the spritesheet itself
+  $spritesheet: width height image $spritesheet-sprites
+  */
+$inureo-name: 'inureo'
+$inureo-x: 0px
+$inureo-y: 0px
+$inureo-offset-x: 0px
+$inureo-offset-y: 0px
+$inureo-width: 32px
+$inureo-height: 32px
+$inureo-total-width: 64px
+$inureo-total-height: 32px
+$inureo-image: '../images/sprite.png'
+$inureo: (0px, 0px, 0px, 0px, 32px, 32px, 64px, 32px, '../images/sprite.png', 'inureo', )
+$inureo-black-name: 'inureo_black'
+$inureo-black-x: 32px
+$inureo-black-y: 0px
+$inureo-black-offset-x: -32px
+$inureo-black-offset-y: 0px
+$inureo-black-width: 32px
+$inureo-black-height: 32px
+$inureo-black-total-width: 64px
+$inureo-black-total-height: 32px
+$inureo-black-image: '../images/sprite.png'
+$inureo-black: (32px, 0px, -32px, 0px, 32px, 32px, 64px, 32px, '../images/sprite.png', 'inureo_black', )
+$spritesheet-width: 64px
+$spritesheet-height: 32px
+$spritesheet-image: '../images/sprite.png'
+$spritesheet-sprites: ($inureo, $inureo-black, )
+$spritesheet: (64px, 32px, '../images/sprite.png', $spritesheet-sprites, )
+
+/*
+  The provided mixins are intended to be used with the array-like variables
+
+  .icon-home
+    @include sprite-width($icon-home)
+
+  .icon-email
+    @include sprite($icon-email)
+  */
+@mixin sprite-width($sprite)
+  width: nth($sprite, 5)
+
+@mixin sprite-height($sprite)
+  height: nth($sprite, 6)
+
+@mixin sprite-position($sprite)
+  $sprite-offset-x: nth($sprite, 3)
+  $sprite-offset-y: nth($sprite, 4)
+  background-position: $sprite-offset-x  $sprite-offset-y
+
+@mixin sprite-image($sprite)
+  $sprite-image: nth($sprite, 9)
+  background-image: url(#{$sprite-image})
+
+@mixin sprite($sprite)
+  @include sprite-image($sprite)
+  @include sprite-position($sprite)
+  @include sprite-width($sprite)
+  @include sprite-height($sprite)
+
+/*
+  The `sprites` mixin generates identical output to the CSS template
+    but can be overridden inside of SASS
+
+  @include sprites($spritesheet-sprites)
+  */
+@mixin sprites($sprites)
+  @each $sprite in $sprites
+    $sprite-name: nth($sprite, 10)
+    .#{$sprite-name}
+      @include sprite($sprite)
