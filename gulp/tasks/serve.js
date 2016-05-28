@@ -23,8 +23,8 @@ gulp.task('serve', ['webpack', 'sass'], () => {
 
   gulp.watch(['source/jade/**/*.jade', 'source/jade/*.jade'], ['jade', reload]);
   gulp.watch([
-    'source/assets/stylesheets/*.{sass, scss}',
-    'source/assets/stylesheets/**/*.{sass, scss}'
+    'source/assets/stylesheets/*.s*ss',
+    'source/assets/stylesheets/**/*.s*ss'
   ], ['sass', reload]);
   gulp.watch(['source/assets/javascripts/*.js'], ['lint', 'webpack']);
   gulp.watch(['source/assets/images/*'], ['imageOptimize', reload]);
