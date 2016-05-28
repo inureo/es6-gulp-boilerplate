@@ -44,6 +44,7 @@
     "gulp-webpack": "^1.5.0",
     "gulp-webserver": "^0.9.1",
     "gulp.spritesmith": "^6.0.0",
+    "require-dir": "^0.3.0",
     "run-sequence": "^1.1.5",
     "webpack": "^1.12.9"
   },
