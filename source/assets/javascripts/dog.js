@@ -8,7 +8,7 @@ class Dog extends Animal {
   }
 
   bow() {
-    Animal.prototype.speak.call(this, 'bow');
+    Animal.prototype.speak.call(this, 'bow!');
   }
 }
 
