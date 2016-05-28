@@ -1,8 +1,12 @@
 'use strict';
 
 import webpack from 'webpack';
+import util from 'gulp-util';
+import merge from 'webpack-merge';
 
-module.exports = {
+const isProduction = (util.env.type === 'production');
+
+let config = {
   entry: {
     animal: ['./source/assets/javascripts/animal.js'],
     dog: './source/assets/javascripts/dog.js',
@@ -33,9 +37,21 @@ module.exports = {
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery"
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
     })
   ]
 };
+
+// for production
+if (isProduction) {
+  config = merge(config, {
+    plugins: [
+      new webpack.optimize.AggressiveMergingPlugin(),
+      new webpack.optimize.UglifyJsPlugin()
+    ]
+  });
+}
+
+module.exports = config;
