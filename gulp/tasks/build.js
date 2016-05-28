@@ -11,9 +11,9 @@ const $ = gulpLoadPlugins({
 
 gulp.task('build', () => {
   runSequence(
-    'clearCache',
-    'clean',
+    ['clearCache', 'clean'],
+    'imageOptimize',
     'createSprite',
-    ['jade', 'sass', 'webpack', 'imageOptimize', 'copy']
+    ['jade', 'sass', 'webpack', 'copy']
   );
 });
