@@ -14,6 +14,12 @@ $ npm install
 $ gulp
 ```
 
+if want using environment
+```
+$ gulp --type [envrionment]
+```
+
+
 # Development Environment
 ## Task Runner
 - gulp
