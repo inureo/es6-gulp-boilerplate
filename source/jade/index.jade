@@ -1,8 +1,11 @@
-doctype html
-html(lang='ja', prefix="og: http://ogp.me/ns#")
-  include ./partial/_head
+extends /partial/_layout
+block var
+  -
+    var metas = {
+      title: 'Title',
+      url: 'http://example.com/url',
+      description: 'Description Text'
+    }
+block body
   body
     h1 Hello!
-
-    script(src='assets/javascripts/vendor.js')
-    script(src='assets/javascripts/dog.js')

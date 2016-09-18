@@ -12,7 +12,7 @@ const $ = gulpLoadPlugins({
   replaceString: /\bgulp[\-.]/
 });
 
-gulp.task('serve', ['webpack', 'sass'], () => {
+gulp.task('serve', ['webpack', 'sass', 'jade'], () => {
   browserSync({
     notify: true,
     logPrefix: pck.name,
