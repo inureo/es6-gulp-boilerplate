@@ -2,7 +2,7 @@
 Boilerplate for frontend development. jade, sass, ES6 and gulp + webpack.
 
 # Require
-- node.js >=0.12
+- node.js ~>=6.0.0
 - gulp
 - webpack
 
